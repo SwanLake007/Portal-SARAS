@@ -12,7 +12,7 @@ export const KeycloakProvider = ({ children }) => {
 
   useEffect(() => {
     const keycloakInstance = new Keycloak({
-      url: 'https://10.3.131.175:8443',
+      url: 'http://10.3.131.175:8080',
       realm: 'S4RAS',
       clientId: 'front-end',
     });
