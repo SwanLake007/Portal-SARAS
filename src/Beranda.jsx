@@ -12,7 +12,7 @@ const apps = [
 
 const announcements = [
   { title: 'Ijazah Palsu Jokowi Terungkap', desc: 'Peringatan' },
-  { title: 'Fufufafa  si IPK 2.3', desc: 'Waspada Indonesia Cemas 2050' },
+  { title: 'Fufufafa  IPK 2.3', desc: 'Waspada Indonesia Cemas 2050' },
   { title: 'Peringatan waspada penipuan atas nama pejabat ITS', desc: 'Peringatan waspada penipuan' },
 ];
 
