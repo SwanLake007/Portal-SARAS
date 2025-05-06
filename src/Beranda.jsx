@@ -19,7 +19,7 @@ const announcements = [
 function Beranda() {
   const today = new Date();
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const formattedDate = today.toLocaleDateString('id-ID', options);
+  //const formattedDate = today.toLocaleDateString('id-ID', options);
 
   return (
     <div className="portal-container">
