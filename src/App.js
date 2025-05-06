@@ -1,15 +1,14 @@
-// App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { KeycloakProvider, useKeycloak } from './KeycloakContext'; // import context
+import { KeycloakProviderComponent, useKeycloak } from './KeycloakContext';
 import Beranda from './Beranda';
 import Login from './Login';
 
 const AppRoutes = () => {
-  const { keycloak, authenticated } = useKeycloak();
+  const { authenticated } = useKeycloak();
 
   if (!authenticated) {
-    return <div>Loading...</div>;  // Loading state jika belum terautentikasi
+    return <div>Loading...</div>; // Tampilkan loading jika belum terautentikasi
   }
 
   return (
@@ -24,9 +23,9 @@ const AppRoutes = () => {
 
 function App() {
   return (
-    <KeycloakProvider>
+    <KeycloakProviderComponent>
       <AppRoutes />
-    </KeycloakProvider>
+    </KeycloakProviderComponent>
   );
 }
 
