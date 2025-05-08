@@ -14,10 +14,10 @@ function Portal() {
           <button className="toggle-btn" onClick={toggleSidebar}>☰</button>
           <h2 className="sidebar-title">Portal S4RAS</h2>
         </div>
-        <a href="#">🏠 <span>Beranda</span></a>
-        <a href="#">👤 <span>Akun</span></a>
-        <a href="#">📢 <span>Pengumuman</span></a>
-        <a href="logout.html" className="logout-btn">⏻ Logout</a>
+        <a href="/">🏠 <span>Beranda</span></a>
+        <a href="/account">👤 <span>Akun</span></a>
+        <a href="/pengumuman">📢 <span>Pengumuman</span></a>
+        <a href="/" className="logout-btn">⏻ Logout</a>
       </div>
 
       <div className="content">
@@ -58,7 +58,7 @@ function Portal() {
               <img src="announcement.png" alt="icon" />
               <p>Lembaga Pengelola Dana Abadi (LPDA)</p>
             </a>
-            <a href="#" className="btn">Lihat Semua Pengumuman</a>
+            <a href="/pengumuman" className="btn">Lihat Semua Pengumuman</a>
           </div>
         </div>
       </div>
