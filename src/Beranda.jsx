@@ -1,5 +1,5 @@
 // HomePage.jsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Beranda.css';
 
 const apps = [
@@ -16,10 +16,29 @@ const announcements = [
   { title: 'Peringatan waspada penipuan atas nama pejabat ITS', desc: 'Peringatan waspada penipuan' },
 ];
 
-function Beranda() {
+function Beranda({ keyCloakClient }) {
   const today = new Date();
   //const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   //const formattedDate = today.toLocaleDateString('id-ID', options);
+
+  const [userInfo, setUserInfo] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const info = await keyCloakClient.loadUserInfo();
+        setUserInfo(info);
+        setLoading(false);
+      } catch(error) {
+        console.error('Gagal memuat informasi pengguna:', error);
+      }
+    }
+
+    fetchUserInfo();
+  }, [keyCloakClient]);
+
+  if(isLoading) return <div>Loading...</div>
 
   return (
     <div className="portal-container">
@@ -57,8 +76,8 @@ function Beranda() {
           <div className="profile-card">
             <div className="profile-icon-large">👨‍🎓</div>
             <div className="profile-info">
-              <div className="profile-name">Muhamad Rafi Rabbani</div>
-              <div className="profile-email">rafi.rabbani@saras.com</div>
+              <div className="profile-name">{ `Halo, ${userInfo.given_name} ${userInfo.family_name}` }</div>
+              <div className="profile-email">{ userInfo.email }</div>
               <div className="manage-account">Kelola Akun ➔</div>
             </div>
           </div>

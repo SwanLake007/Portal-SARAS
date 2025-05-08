@@ -1,21 +1,24 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { KeycloakProviderComponent, useKeycloak } from './KeycloakContext';
+//import { KeycloakProviderComponent, useKeycloak } from './KeycloakContext';
+
+import useAuth from './hooks/useAuth';
+
 import Beranda from './Beranda';
-import Login from './Login';
+//import Login from './Login';
 
 const AppRoutes = () => {
-  const { authenticated } = useKeycloak();
+  const [isLogin, keycloakClient] = useAuth();
+  console.log(keycloakClient);
 
-  if (!authenticated) {
-    return <div>Loading...</div>; // Tampilkan loading jika belum terautentikasi
+  if (!isLogin) {
+    return <div>Loading...</div>;
   }
 
   return (
     <Router>
       <Routes>
-        <Route path="/home" element={<Beranda />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Beranda keyCloakClient={keycloakClient} />} />
       </Routes>
     </Router>
   );
@@ -23,9 +26,7 @@ const AppRoutes = () => {
 
 function App() {
   return (
-    <KeycloakProviderComponent>
-      <AppRoutes />
-    </KeycloakProviderComponent>
+    <AppRoutes />
   );
 }
 

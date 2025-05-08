@@ -1,0 +1,34 @@
+import { useState, useEffect, useRef } from "react";
+import Keycloak from "keycloak-js";
+
+const client = new Keycloak({
+  url: 'http://10.3.131.175:8080',
+  realm: 'S4RAS',
+  clientId: 'front-end',
+});
+
+const useAuth = () => {
+  const isRun = useRef(false);
+  const [keycloakClient, setKeycloakClient] = useState(null);
+  const [isLogin, setLogin] = useState(false);
+
+  useEffect(() => {
+    if (isRun.current) return;
+
+    isRun.current = true;
+    client
+      .init({
+        onLoad: 'login-required',
+        pkceMethod: 'S256',
+        checkLoginIframe: false,
+      })
+      .then((res) => {
+        setLogin(res);
+        setKeycloakClient(client);
+      });
+  }, []);
+
+  return [isLogin, keycloakClient];
+};
+
+export default useAuth;
