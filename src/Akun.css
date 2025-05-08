@@ -76,20 +76,7 @@
     height: 80px;
     border-radius: 50%;
   }
-  
-  .camera-icon {
-    position: absolute;
-    bottom: -5px;
-    right: -5px;
-    width: 30px;
-    height: 30px;
-    background: white;
-    border-radius: 50%;
-    background-image: url('');
-    background-size: cover;
-    border: 1px solid #ccc;
-  }
-  
+    
   .account-info {
     margin-left: 20px;
   }
