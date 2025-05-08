@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import useAuth from './hooks/useAuth';
 
 import Beranda from './Beranda';
+import Akun from './Akun';
+import Pengumuman from './Pengumuman';
 //import Login from './Login';
 
 const AppRoutes = () => {
@@ -19,6 +21,8 @@ const AppRoutes = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Beranda keyCloakClient={keycloakClient} />} />
+        <Route path="/account" element={<Akun/>} />
+        <Route path="/pengumuman" element={<Pengumuman/>} />
       </Routes>
     </Router>
   );

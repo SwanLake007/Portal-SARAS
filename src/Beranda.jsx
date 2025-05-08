@@ -47,9 +47,9 @@ function Beranda({ keyCloakClient }) {
           <h1 className="logo"><span>S4RAS</span> Portal</h1>
         </div>
         <nav className="sidebar-menu">
-          <a href="#" className="menu-item active">🏠 Beranda</a>
-          <a href="#" className="menu-item">👤 Akun</a>
-          <a href="#" className="menu-item">📢 Pengumuman</a>
+          <a href="/" className="menu-item active">🏠 Beranda</a>
+          <a href="/account" className="menu-item">👤 Akun</a>
+          <a href="/pengumuman" className="menu-item">📢 Pengumuman</a>
         </nav>
       </aside>
 

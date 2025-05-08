@@ -1,12 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Keycloak from "keycloak-js";
 
-const client = new Keycloak({
-  url: 'http://10.3.131.175:8080',
-  realm: 'S4RAS',
-  clientId: 'front-end',
-});
-
 const useAuth = () => {
   const isRun = useRef(false);
   const [keycloakClient, setKeycloakClient] = useState(null);
@@ -14,6 +8,12 @@ const useAuth = () => {
 
   useEffect(() => {
     if (isRun.current) return;
+
+    const client = new Keycloak({
+      url: 'http://10.3.131.175:8080',
+      realm: 'S4RAS',
+      clientId: 'front-end',
+    });
 
     isRun.current = true;
     client
