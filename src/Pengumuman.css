@@ -29,16 +29,21 @@
   
   .menu-item {
     display: block;
+    padding: 10px;
+    border-radius: 10px;
     margin-bottom: 20px;
     text-decoration: none;
     color: #555;
     font-weight: 500;
   }
+
+  .menu-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
   
   .menu-item.active {
     background: #eef2f7;
-    padding: 10px;
-    border-radius: 8px;
   }
   
   .main-content {

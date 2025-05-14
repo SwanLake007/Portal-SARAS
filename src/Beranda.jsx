@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import './Beranda.css';
 
 const apps = [
-  { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓' },
-  { name: 'OneCloud', desc: 'Email', icon: '📧' },
-  { name: 'NexaPlay', desc: 'Streaming Service', icon: '👥' },
-  { name: 'Chat', desc: 'A VoIP Service', icon: '🗯️' },
-  { name: 'Settings', desc: 'Pengaturan', icon: '⚙️' },
+  { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓', redirect_url: 'https://10.3.132.67/auth/oidc' },
+  { name: 'OneCloud', desc: 'Email', icon: '📧', redirect_url: 'https://10.3.132.70' },
+  { name: 'NexaPlay', desc: 'Streaming Service', icon: '👥', redirect_url: 'https://google.com' },
+  { name: 'Chat', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://google.com' },
+  { name: 'Settings', desc: 'Pengaturan', icon: '⚙️', redirect_url: 'https://google.com' },
 ];
 
 const announcements = [
@@ -15,6 +15,14 @@ const announcements = [
   { title: 'Fufufafa  IPK 2.3', desc: 'Waspada Indonesia Cemas 2050' },
   { title: 'Peringatan waspada penipuan atas nama pejabat ITS', desc: 'Peringatan waspada penipuan' },
 ];
+
+function redirectFunc(redirect_url) {
+  window.open(redirect_url, '_blank');
+}
+
+function logoutFunc(keyCloakClient) {
+  keyCloakClient.logout();
+}
 
 function Beranda({ keyCloakClient }) {
   const today = new Date();
@@ -43,13 +51,18 @@ function Beranda({ keyCloakClient }) {
   return (
     <div className="portal-container">
       <aside className="sidebar">
-        <div className="sidebar-header">
-          <h1 className="logo"><span>S4RAS</span> Portal</h1>
+        <div className='sidebar-top'>
+          <div className="sidebar-header">
+            <h1 className="logo"><span>S4RAS</span> Portal</h1>
+          </div>
+          <nav className="sidebar-menu">
+            <a href="/" className="menu-item active">🏠 Beranda</a>
+            <a href="/account" className="menu-item">👤 Akun</a>
+            <a href="/pengumuman" className="menu-item">📢 Pengumuman</a>
+          </nav>
         </div>
         <nav className="sidebar-menu">
-          <a href="/" className="menu-item active">🏠 Beranda</a>
-          <a href="/account" className="menu-item">👤 Akun</a>
-          <a href="/pengumuman" className="menu-item">📢 Pengumuman</a>
+          <div className="menu-item" onClick={() => {logoutFunc(keyCloakClient)}}>Logout</div>
         </nav>
       </aside>
 
@@ -59,7 +72,7 @@ function Beranda({ keyCloakClient }) {
             <h2>Aplikasi dan Layanan</h2>
             <div className="apps-grid">
               {apps.map((app, index) => (
-                <div className="app-card" key={index}>
+                <div className="app-card" key={index} onClick={() => {redirectFunc(app.redirect_url)}}>
                   <div className="app-icon">{app.icon}</div>
                   <div>
                     <div className="app-name">{app.name}</div>
