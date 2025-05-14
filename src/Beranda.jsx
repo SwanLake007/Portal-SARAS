@@ -1,13 +1,14 @@
 // HomePage.jsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Beranda.css';
 
 const apps = [
-  { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓', redirect_url: 'https://10.3.132.67/auth/oidc' },
-  { name: 'OneCloud', desc: 'Storage', icon: '📧', redirect_url: 'https://10.3.132.70' },
-  { name: 'NexaPlay', desc: 'Streaming Service', icon: '👥', redirect_url: 'https://google.com' },
-  { name: 'Voice', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://google.com' },
-  { name: 'Settings', desc: 'Pengaturan', icon: '⚙️', redirect_url: 'https://google.com' },
+  { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓', redirect_url: 'https://10.3.132.67/auth/oidc', isForAdmin: false },
+  { name: 'OneCloud', desc: 'Storage', icon: '📧', redirect_url: 'https://10.3.132.70', isForAdmin: false },
+  { name: 'NexaPlay', desc: 'An IPTV Service', icon: '🎞', redirect_url: 'https://google.com', isForAdmin: false },
+  { name: 'Chat', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://google.com', isForAdmin: false },
+  { name: 'Monitoring Panel', desc: 'Grafana', icon: '📊', redirect_url: 'https://google.com', isForAdmin: true },
+  { name: 'Settings', desc: 'Pengaturan', icon: '⚙️', redirect_url: 'https://google.com', isForAdmin: false },
 ];
 
 const announcements = [
@@ -71,7 +72,7 @@ function Beranda({ keyCloakClient }) {
           <div className="apps-section">
             <h2>Aplikasi dan Layanan</h2>
             <div className="apps-grid">
-              {apps.map((app, index) => (
+              {apps.filter((app) => userInfo.realm_access.roles.includes('admin')? app : app.isForAdmin === false).map((app, index) => (
                 <div className="app-card" key={index} onClick={() => {redirectFunc(app.redirect_url)}}>
                   <div className="app-icon">{app.icon}</div>
                   <div>
