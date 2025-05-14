@@ -14,17 +14,26 @@ const announcements = [
   { title: 'ISICO 2025', description: 'CALL FOR PAPERS AI Powered Business Transformation', badge: 'Kegiatan' },
 ];
 
-function Pengumuman() {
+function logoutFunc(keyCloakClient) {
+  keyCloakClient.logout();
+}
+
+function Pengumuman({ keyCloakClient }) {
   return (
     <div className="portal-container">
       <aside className="sidebar">
-        <div className="sidebar-header">
-          <h1 className="logo"><span>S4RAS</span> Portal</h1>
+        <div className='sidebar-top'>
+          <div className="sidebar-header">
+            <h1 className="logo"><span>S4RAS</span> Portal</h1>
+          </div>
+          <nav className="sidebar-menu">
+            <a href="/" className="menu-item">🏠 Beranda</a>
+            <a href="/account" className="menu-item">👤 Akun</a>
+            <a href="/pengumuman" className="menu-item active">📢 Pengumuman</a>
+          </nav>
         </div>
         <nav className="sidebar-menu">
-          <a href="/" className="menu-item">🏠 Beranda</a>
-          <a href="/account" className="menu-item">👤 Akun</a>
-          <a href="/pengumuman" className="menu-item active">📢 Pengumuman</a>
+          <div className="menu-item" onClick={() => {logoutFunc(keyCloakClient)}}>Logout</div>
         </nav>
       </aside>
 

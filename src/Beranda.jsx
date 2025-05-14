@@ -4,7 +4,7 @@ import './Beranda.css';
 
 const apps = [
   { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓', redirect_url: 'https://10.3.132.67/auth/oidc' },
-  { name: 'OneCloud', desc: 'Email', icon: '📧', redirect_url: 'https://10.3.132.70' },
+  { name: 'OneCloud', desc: 'Storage', icon: '📧', redirect_url: 'https://10.3.132.70' },
   { name: 'NexaPlay', desc: 'Streaming Service', icon: '👥', redirect_url: 'https://google.com' },
   { name: 'Chat', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://google.com' },
   { name: 'Settings', desc: 'Pengaturan', icon: '⚙️', redirect_url: 'https://google.com' },

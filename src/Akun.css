@@ -6,7 +6,12 @@
   }
   
   .sidebar {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    justify-content: space-between;
     width: 260px;
+    height: 100vh;
     background: #ffffff;
     padding: 20px;
     border-right: 1px solid #e0e0e0;
@@ -29,7 +34,6 @@
     display: block;
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 20px;
     text-decoration: none;
     color: #555;
     font-weight: 500;
@@ -47,6 +51,7 @@
   .main-content {
     flex: 1;
     padding: 40px;
+    margin-left: 300px;
   }
   
   .section-title {

@@ -21,8 +21,8 @@ const AppRoutes = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Beranda keyCloakClient={keycloakClient} />} />
-        <Route path="/account" element={<Akun/>} />
-        <Route path="/pengumuman" element={<Pengumuman/>} />
+        <Route path="/account" element={<Akun keyCloakClient={keycloakClient}/>} />
+        <Route path="/pengumuman" element={<Pengumuman keyCloakClient={keycloakClient}/>} />
       </Routes>
     </Router>
   );
