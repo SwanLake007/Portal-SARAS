@@ -92,7 +92,7 @@ function Beranda({ keyCloakClient }) {
             <div className="profile-info">
               <div className="profile-name">{ `Halo, ${userInfo.given_name} ${userInfo.family_name}` }</div>
               <div className="profile-email">{ userInfo.email }</div>
-              <div className="manage-account">Kelola Akun ➔</div>
+              <a href="/account" className="manage-account">Kelola Akun ➔</a>
             </div>
           </div>
 
@@ -112,7 +112,9 @@ function Beranda({ keyCloakClient }) {
                 </div>
               </div>
             ))}
-            <button className="view-all-announcements">Lihat Semua Pengumuman</button>
+            <div className='view-all-announcements-box'>
+              <a href="/pengumuman" className="view-all-announcements">Lihat Semua Pengumuman</a>
+            </div>
           </div>
         </div>
       </main>

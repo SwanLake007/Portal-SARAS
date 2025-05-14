@@ -151,6 +151,7 @@
     color: #0053a0;
     font-weight: 600;
     font-size: 14px;
+    text-decoration: none;
   }
   
   .date-card {
@@ -198,14 +199,21 @@
     font-size: 12px;
     color: #777;
   }
-  
-  .view-all-announcements {
+
+  .view-all-announcements-box {
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
-    background: #f9f9f9;
     border: none;
     padding: 10px;
-    width: 100%;
-    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .view-all-announcements {
+    font-size: 14px;
+    border: none;
     cursor: pointer;
     font-weight: 600;
+    text-decoration: none;
+    color: #0053a0;
   }
