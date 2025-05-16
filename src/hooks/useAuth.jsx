@@ -10,7 +10,7 @@ const useAuth = () => {
     if (isRun.current) return;
 
     const client = new Keycloak({
-      url: 'https://10.3.131.175:8443',
+      url: 'https://keycloak.portal-saras.com',
       realm: 'S4RAS',
       clientId: 'front-end',
     });
