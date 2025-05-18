@@ -50,7 +50,7 @@ export const KeycloakProviderComponent = ({ children }) => {
 
   // Menampilkan loading sampai keycloak dan autentikasi selesai
   if (loading) {
-    return <div></div>;
+    return <div>Loading...</div>;
   }
 
   return (
