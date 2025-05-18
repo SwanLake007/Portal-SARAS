@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import './Beranda.css';
 
 const apps = [
-  { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓', redirect_url: 'https://10.3.132.67/auth/oidc', isForAdmin: false },
-  { name: 'OneCloud', desc: 'Storage', icon: '📧', redirect_url: 'https://10.3.132.70', isForAdmin: false },
+  { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓', redirect_url: 'https://moodle.portal-saras.com', isForAdmin: false },
+  { name: 'OneCloud', desc: 'Storage', icon: '📧', redirect_url: 'https://nextcloud.portal-saras.com', isForAdmin: false },
   { name: 'NexaPlay', desc: 'An IPTV Service', icon: '🎞', redirect_url: 'https://google.com', isForAdmin: false },
   { name: 'Chat', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://google.com', isForAdmin: false },
   { name: 'Monitoring Panel', desc: 'Grafana', icon: '📊', redirect_url: 'https://google.com', isForAdmin: true },
