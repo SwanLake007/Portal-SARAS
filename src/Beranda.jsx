@@ -12,8 +12,8 @@ const apps = [
 ];
 
 const announcements = [
-  { title: 'Ijazah Palsu Jokowi Terungkap', desc: 'Peringatan' },
-  { title: 'Fufufafa  IPK 2.3', desc: 'Waspada Indonesia Cemas 2050' },
+  { title: 'Workshop Huawei Academy', desc: 'Workshop' },
+  { title: 'CISCO Training 2025', desc: 'Workshop' },
   { title: 'Peringatan waspada penipuan atas nama pejabat ITS', desc: 'Peringatan waspada penipuan' },
 ];
 
