@@ -1,5 +1,5 @@
 // AccountPage.jsx
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './Akun.css';
 
 const dataSections = [
@@ -35,6 +35,26 @@ function logoutFunc(keyCloakClient) {
 }
 
 function Akun({ keyCloakClient }) {
+  const [userInfo, setUserInfo] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const info = await keyCloakClient.loadUserInfo();
+        console.log(info)
+        setUserInfo(info);
+        setLoading(false);
+      } catch(error) {
+        console.error('Gagal memuat informasi pengguna:', error);
+      }
+    }
+
+    fetchUserInfo();
+  }, [keyCloakClient]);
+
+  if(isLoading) return <div>Loading...</div>
+
   return (
     <div className="portal-container">
       <aside className="sidebar">
@@ -61,7 +81,7 @@ function Akun({ keyCloakClient }) {
           </div>
           <div className="account-info">
             <h2>Muhamad Rafi Rabbani</h2>
-            <p className="role">Siswa</p>
+            <p className="role">{ userInfo.realm_access.roles[0] }</p>
           </div>
         </div>
 

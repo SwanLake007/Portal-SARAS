@@ -11,7 +11,6 @@ import Pengumuman from './Pengumuman';
 
 const AppRoutes = () => {
   const [isLogin, keycloakClient] = useAuth();
-  console.log(keycloakClient);
 
   if (!isLogin) {
     return <div>Loading...</div>;

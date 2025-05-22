@@ -1,18 +1,19 @@
 // HomePage.jsx
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Beranda.css';
 
 const apps = [
-  { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓', redirect_url: 'https://10.3.132.67/auth/oidc' },
-  { name: 'OneCloud', desc: 'Storage', icon: '📧', redirect_url: 'https://10.3.132.70' },
-  { name: 'NexaPlay', desc: 'An IPTV Service', icon: '👥', redirect_url: 'https://google.com' },
-  { name: 'Voice', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://google.com' },
-  { name: 'Settings', desc: 'Pengaturan', icon: '⚙️', redirect_url: 'https://google.com' },
+  { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓', redirect_url: 'https://moodle.portal-saras.com/auth/oidc/', isForAdmin: false },
+  { name: 'OneCloud', desc: 'Storage', icon: '📧', redirect_url: 'https://nextcloud.portal-saras.com/apps/user_oidc/login/1', isForAdmin: false },
+  { name: 'NexaPlay', desc: 'An IPTV Service', icon: '🎞', redirect_url: 'https://nexaplay-iptv.netlify.app', isForAdmin: false },
+  { name: 'Chat', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://google.com', isForAdmin: false },
+  { name: 'Monitoring Panel', desc: 'Grafana', icon: '📊', redirect_url: 'https://google.com', isForAdmin: true },
+  { name: 'Settings', desc: 'Pengaturan', icon: '⚙️', redirect_url: 'https://google.com', isForAdmin: false },
 ];
 
 const announcements = [
-  { title: 'Ijazah Palsu Jokowi Terungkap', desc: 'Peringatan' },
-  { title: 'Fufufafa  IPK 2.3', desc: 'Waspada Indonesia Cemas 2050' },
+  { title: 'Workshop Huawei Academy', desc: 'Workshop' },
+  { title: 'CISCO Training 2025', desc: 'Workshop' },
   { title: 'Peringatan waspada penipuan atas nama pejabat ITS', desc: 'Peringatan waspada penipuan' },
 ];
 
@@ -71,7 +72,7 @@ function Beranda({ keyCloakClient }) {
           <div className="apps-section">
             <h2>Aplikasi dan Layanan</h2>
             <div className="apps-grid">
-              {apps.map((app, index) => (
+              {apps.filter((app) => userInfo.realm_access.roles.includes('admin')? app : app.isForAdmin === false).map((app, index) => (
                 <div className="app-card" key={index} onClick={() => {redirectFunc(app.redirect_url)}}>
                   <div className="app-icon">{app.icon}</div>
                   <div>
@@ -91,7 +92,7 @@ function Beranda({ keyCloakClient }) {
             <div className="profile-info">
               <div className="profile-name">{ `Halo, ${userInfo.given_name} ${userInfo.family_name}` }</div>
               <div className="profile-email">{ userInfo.email }</div>
-              <div className="manage-account">Kelola Akun ➔</div>
+              <a href="/account" className="manage-account">Kelola Akun ➔</a>
             </div>
           </div>
 
@@ -111,7 +112,9 @@ function Beranda({ keyCloakClient }) {
                 </div>
               </div>
             ))}
-            <button className="view-all-announcements">Lihat Semua Pengumuman</button>
+            <div className='view-all-announcements-box'>
+              <a href="/pengumuman" className="view-all-announcements">Lihat Semua Pengumuman</a>
+            </div>
           </div>
         </div>
       </main>
