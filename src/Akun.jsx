@@ -80,7 +80,7 @@ function Akun({ keyCloakClient }) {
             <div className="profile-icon">👨‍🎓</div>
           </div>
           <div className="account-info">
-            <h2>Muhamad Rafi Rabbani</h2>
+            <h2>{ `${userInfo.given_name} ${userInfo.family_name}` }</h2>
             <p className="role">{ userInfo.realm_access.roles[0] }</p>
           </div>
         </div>
