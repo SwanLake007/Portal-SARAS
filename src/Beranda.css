@@ -70,6 +70,13 @@
     gap: 20px;
   }
   
+  .apps-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  }
+
   .apps-section h2 {
     margin-bottom: 20px;
   }
@@ -108,13 +115,21 @@
   
   .show-all-btn {
     margin-top: 20px;
-    background: #f9f9f9;
+    background: white;
     border: none;
     padding: 10px;
     width: 100%;
     border-radius: 10px;
     cursor: pointer;
+    font-size: 14px;
     font-weight: 600;
+    text-decoration: none;
+    color: #0053a0;
+  }
+
+  .show-all-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
   }
   
   .profile-card, .date-card, .announcements-card {
