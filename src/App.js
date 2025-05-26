@@ -1,13 +1,10 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-//import { KeycloakProviderComponent, useKeycloak } from './KeycloakContext';
 
 import useAuth from './hooks/useAuth';
 
 import Beranda from './Beranda';
 import Akun from './Akun';
 import Pengumuman from './Pengumuman';
-//import Login from './Login';
 
 const AppRoutes = () => {
   const [isLogin, keycloakClient] = useAuth();

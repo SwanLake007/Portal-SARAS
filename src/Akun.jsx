@@ -1,5 +1,6 @@
 // AccountPage.jsx
 import { useEffect, useState } from 'react';
+import SidebarComponent from './components/Sidebar';
 import './Akun.css';
 
 const dataSections = [
@@ -30,10 +31,6 @@ const dataSections = [
   },
 ];
 
-function logoutFunc(keyCloakClient) {
-  keyCloakClient.logout();
-}
-
 function Akun({ keyCloakClient }) {
   const [userInfo, setUserInfo] = useState(null);
   const [isLoading, setLoading] = useState(true);
@@ -57,21 +54,7 @@ function Akun({ keyCloakClient }) {
 
   return (
     <div className="portal-container">
-      <aside className="sidebar">
-        <div className='sidebar-top'>
-          <div className="sidebar-header">
-            <h1 className="logo"><span>S4RAS</span> Portal</h1>
-          </div>
-          <nav className="sidebar-menu">
-            <a href="/" className="menu-item">🏠 Beranda</a>
-            <a href="/account" className="menu-item active">👤 Akun</a>
-            <a href="/pengumuman" className="menu-item">📢 Pengumuman</a>
-          </nav>
-        </div>
-        <nav className="sidebar-menu">
-          <div className="menu-item" onClick={() => {logoutFunc(keyCloakClient)}}>Logout</div>
-        </nav>
-      </aside>
+      <SidebarComponent keyCloakClient={keyCloakClient}/>
 
       <main className="main-content">
         <h2 className="section-title">Akun</h2>

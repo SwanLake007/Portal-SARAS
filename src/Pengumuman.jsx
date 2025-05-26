@@ -1,41 +1,28 @@
-// AnnouncementPage.jsx
-import React from 'react';
+import SidebarComponent from './components/Sidebar';
+import Modal from './components/Modal';
+import { announcementList } from './constant/portal-const';
 import './Pengumuman.css';
-
-const announcements = [
-  { title: 'Lembaga Pengelola Dana Abadi', description: 'Lembaga Pengelola Dana Abadi (LPDA)', badge: 'Lainnya' },
-  { title: 'Peluang Hibah Nasional & Internasional', description: 'Peluang Hibah Nasional & Internasional', badge: 'Kegiatan' },
-  { title: 'Peringatan waspada penipuan...', description: 'Peringatan waspada penipuan atas nama pejabat ITS', badge: 'Sosialisasi' },
-  { title: 'Beasiswa Boeing', description: 'Beasiswa Boeing', badge: 'Kegiatan' },
-  { title: 'panduan UTBK', description: 'Panduan Lengkap UTBK-SNBT 2025 di ITS', badge: 'Sosialisasi' },
-  { title: 'Ibadah Perayaan Paskah Civitas', description: 'Ibadah Perayaan Paskah Civitas Akademika Kristen ITS 2025', badge: 'Kegiatan' },
-  { title: 'Beasiswa ADARO', description: 'Beasiswa ADARO', badge: 'Kegiatan' },
-  { title: 'Women in Technopreneurship', description: 'Program pendanaan produk inovasi menuju pasar', badge: 'Kegiatan' },
-  { title: 'ISICO 2025', description: 'CALL FOR PAPERS AI Powered Business Transformation', badge: 'Kegiatan' },
-];
-
-function logoutFunc(keyCloakClient) {
-  keyCloakClient.logout();
-}
+import { useState } from 'react';
 
 function Pengumuman({ keyCloakClient }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleOpenModal = (item) => {
+    setIsOpen(true);
+    setSelectedItem(item);
+  };
+
+  const handleCloseModal = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      setSelectedItem(null);
+    }, 150);
+  };
+
   return (
     <div className="portal-container">
-      <aside className="sidebar">
-        <div className='sidebar-top'>
-          <div className="sidebar-header">
-            <h1 className="logo"><span>S4RAS</span> Portal</h1>
-          </div>
-          <nav className="sidebar-menu">
-            <a href="/" className="menu-item">🏠 Beranda</a>
-            <a href="/account" className="menu-item">👤 Akun</a>
-            <a href="/pengumuman" className="menu-item active">📢 Pengumuman</a>
-          </nav>
-        </div>
-        <nav className="sidebar-menu">
-          <div className="menu-item" onClick={() => {logoutFunc(keyCloakClient)}}>Logout</div>
-        </nav>
-      </aside>
+      <SidebarComponent keyCloakClient={keyCloakClient}/>
 
       <main className="main-content">
         <div className="announcement-header">
@@ -44,12 +31,23 @@ function Pengumuman({ keyCloakClient }) {
         </div>
 
         <div className="announcement-grid">
-          {announcements.map((item, index) => (
-            <div className="announcement-card" key={index}>
+          {announcementList.map((item, index) => (
+            <div className="announcement-card hover:cursor-pointer" key={index} onClick={() => handleOpenModal(item)}>
               <div className="megaphone-icon">📢</div>
               <div className="announcement-title">{item.title}</div>
               <div className="announcement-description">{item.description}</div>
               <div className="announcement-badge">{item.badge}</div>
+
+              <Modal
+                isOpen={isOpen}
+                onClose={handleCloseModal}
+                title={selectedItem?.title || 'Detail Item'}
+              >
+                <div className=' flex flex-col gap-3'>
+                  <div className="announcement-description">{selectedItem?.description}</div>
+                  <div className="announcement-badge">{selectedItem?.badge}</div>
+                </div>
+              </Modal>
             </div>
           ))}
         </div>
