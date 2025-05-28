@@ -1,3 +1,4 @@
+'use client'
 import SidebarComponent from './components/Sidebar';
 import Modal from './components/Modal';
 import { announcementList } from './constant/portal-const';
@@ -37,19 +38,18 @@ function Pengumuman({ keyCloakClient }) {
               <div className="announcement-title">{item.title}</div>
               <div className="announcement-description">{item.description}</div>
               <div className="announcement-badge">{item.badge}</div>
-
-              <Modal
-                isOpen={isOpen}
-                onClose={handleCloseModal}
-                title={selectedItem?.title || 'Detail Item'}
-              >
-                <div className=' flex flex-col gap-3'>
-                  <div className="announcement-description">{selectedItem?.description}</div>
-                  <div className="announcement-badge">{selectedItem?.badge}</div>
-                </div>
-              </Modal>
             </div>
           ))}
+          <Modal
+              isOpen={isOpen}
+              onClose={handleCloseModal}
+              title={selectedItem?.title || 'Detail Item'}
+            >
+              <div className=' flex flex-col gap-3'>
+                <div className="announcement-description">{selectedItem?.description}</div>
+                <div className="announcement-badge">{selectedItem?.badge}</div>
+              </div>
+            </Modal>
         </div>
       </main>
     </div>

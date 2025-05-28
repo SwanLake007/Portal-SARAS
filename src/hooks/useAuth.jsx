@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from "react";
+import { useKeycloakStore, useUserInfoStore } from '../store/useStore';
 import Keycloak from "keycloak-js";
 
 const useAuth = () => {
   const isRun = useRef(false);
-  const [keycloakClient, setKeycloakClient] = useState(null);
+  const { setKeycloakClient } = useKeycloakStore();
+  const { setUserInfo } = useUserInfoStore();
   const [isLogin, setLogin] = useState(false);
 
   useEffect(() => {
@@ -23,12 +25,15 @@ const useAuth = () => {
         checkLoginIframe: false,
       })
       .then((res) => {
-        setLogin(res);
         setKeycloakClient(client);
+        client.loadUserInfo().then((info) => {
+            setUserInfo(info);
+            setLogin(res);
+        })
       });
-  }, []);
+  });
 
-  return [isLogin, keycloakClient];
+  return [isLogin];
 };
 
 export default useAuth;

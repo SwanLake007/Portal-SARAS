@@ -18,3 +18,31 @@ export const announcementList = [
   { title: 'Women in Technopreneurship', description: 'Program pendanaan produk inovasi menuju pasar', badge: 'Kegiatan' },
   { title: 'ISICO 2025', description: 'CALL FOR PAPERS AI Powered Business Transformation', badge: 'Kegiatan' },
 ]
+
+export const dataSections = [
+  {
+    title: 'Informasi pribadi',
+    subtitle: 'Data yang umumnya ditampilkan di semua web myITS',
+    items: [
+      { icon: '🅰️', title: 'Nama', subtitle: 'Ubah nama lengkap dan nama panggilan' },
+      { icon: '📅', title: 'Tanggal Lahir', subtitle: 'Melihat tanggal lahir' },
+    ],
+  },
+  {
+    title: 'Kontak',
+    subtitle: 'Ubah email dan nomor ponsel',
+    items: [
+      { icon: '✉️', title: 'Email', subtitle: 'Perbarui dan verifikasi email' },
+      { icon: '📞', title: 'Nomor Ponsel', subtitle: 'Perbarui dan verifikasi nomor telepon' },
+    ],
+  },
+  {
+    title: 'Lainnya',
+    subtitle: 'Kata sandi dan preferensi tampilan',
+    items: [
+      { icon: '🔑', title: 'Kata Sandi', subtitle: 'Perbarui kata sandi' },
+      { icon: '🔒', title: 'Multi-Factor Authentication', subtitle: 'Kelola multi-factor authentication Anda' },
+      { icon: '⚙️', title: 'Pengaturan Web', subtitle: 'Sesuaikan preferensi tampilan' },
+    ],
+  },
+];

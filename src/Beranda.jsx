@@ -1,8 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react';
+import { useUserInfoStore } from './store/useStore';
 import { portalApps, announcementList } from './constant/portal-const';
 import SidebarComponent from './components/Sidebar';
+import { useNavigate } from 'react-router-dom'
 import './Beranda.css';
 
 function redirectFunc(redirect_url) {
@@ -11,25 +12,12 @@ function redirectFunc(redirect_url) {
 
 function Beranda({ keyCloakClient }) {
   const today = new Date();
+  const navigate = useNavigate();
+  const { userInfo } = useUserInfoStore();
 
-  const [userInfo, setUserInfo] = useState(null);
-  const [isLoading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const info = await keyCloakClient.loadUserInfo();
-        setUserInfo(info);
-        setLoading(false);
-      } catch(error) {
-        console.error('Gagal memuat informasi pengguna:', error);
-      }
-    }
-
-    fetchUserInfo();
-  }, [keyCloakClient]);
-
-  if(isLoading) return <div>Loading...</div>
+  function redirectPage(path) {
+    navigate(path)
+  }
 
   return (
     <div className="portal-container">
@@ -40,7 +28,7 @@ function Beranda({ keyCloakClient }) {
           <div className="apps-section">
             <h2>Aplikasi dan Layanan</h2>
             <div className="apps-grid">
-              {portalApps.filter((app) => userInfo.realm_access.roles.includes('admin')? app : app.isForAdmin === false).map((app, index) => (
+              {portalApps.filter((app) => userInfo?.realm_access.roles.includes('admin')? app : app.isForAdmin === false).map((app, index) => (
                 <div className="app-card" key={index} onClick={() => {redirectFunc(app.redirect_url)}}>
                   <div className="app-icon">{app.icon}</div>
                   <div>
@@ -58,9 +46,9 @@ function Beranda({ keyCloakClient }) {
           <div className="profile-card">
             <div className="profile-icon-large">👨‍🎓</div>
             <div className="profile-info">
-              <div className="profile-name">{ `Halo, ${userInfo.given_name} ${userInfo.family_name}` }</div>
-              <div className="profile-email">{ userInfo.email }</div>
-              <a href="/account" className="manage-account">Kelola Akun ➔</a>
+              <div className="profile-name">{ `Halo, ${userInfo?.given_name} ${userInfo?.family_name}` }</div>
+              <div className="profile-email">{ userInfo?.email }</div>
+              <p onClick={() => redirectPage('/account')} className="manage-account hover:cursor-pointer">Kelola Akun ➔</p>
             </div>
           </div>
 
@@ -81,7 +69,7 @@ function Beranda({ keyCloakClient }) {
               </div>
             ))}
             <div className='view-all-announcements-box'>
-              <a href="/pengumuman" className="view-all-announcements">Lihat Semua Pengumuman</a>
+              <p onClick={() => redirectPage('/pengumuman')} className="view-all-announcements">Lihat Semua Pengumuman</p>
             </div>
           </div>
         </div>
