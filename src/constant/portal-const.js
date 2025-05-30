@@ -2,7 +2,7 @@ export const portalApps = [
   { name: 'Classroom', desc: 'Materi dan tugas', icon: '🎓', redirect_url: 'https://moodle.portal-saras.com/auth/oidc/', isForAdmin: false },
   { name: 'OneCloud', desc: 'Storage', icon: '📧', redirect_url: 'https://nextcloud.portal-saras.com/apps/user_oidc/login/1', isForAdmin: false },
   { name: 'NexaPlay', desc: 'An IPTV Service', icon: '🎞', redirect_url: 'https://nexaplay.portal-saras.com', isForAdmin: false },
-  { name: 'Chat', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://google.com', isForAdmin: false },
+  { name: 'Chat', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://chat-voip.netlify.app', isForAdmin: false },
   { name: 'Monitoring Panel', desc: 'Grafana', icon: '📊', redirect_url: 'https://google.com', isForAdmin: true },
   { name: 'Settings', desc: 'Pengaturan', icon: '⚙️', redirect_url: 'https://google.com', isForAdmin: false },
 ]
