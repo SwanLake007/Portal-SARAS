@@ -22,7 +22,7 @@ export const announcementList = [
 export const dataSections = [
   {
     title: 'Informasi pribadi',
-    subtitle: 'Data yang umumnya ditampilkan di semua web myITS',
+    subtitle: 'Data yang umumnya ditampilkan di semua web Portal',
     items: [
       { icon: '🅰️', title: 'Nama', subtitle: 'Ubah nama lengkap dan nama panggilan' },
       { icon: '📅', title: 'Tanggal Lahir', subtitle: 'Melihat tanggal lahir' },
