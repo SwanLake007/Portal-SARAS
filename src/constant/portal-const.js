@@ -4,7 +4,7 @@ export const portalApps = [
   { name: 'NexaPlay', desc: 'An IPTV Service', icon: '🎞', redirect_url: 'https://iptv.portal-saras.com/sso/OID/start/Keycloak', isForAdmin: false },
   { name: 'Chat', desc: 'A VoIP Service', icon: '🗯️', redirect_url: 'https://voip.portal-saras.com', isForAdmin: false },
   { name: 'Monitoring Panel', desc: 'Grafana', icon: '📊', redirect_url: 'https://grafana.portal-saras.com', isForAdmin: true },
-  { name: 'Settings', desc: 'Pengaturan', icon: '⚙️', redirect_url: 'https://google.com', isForAdmin: false },
+  { name: 'Settings', desc: 'Pengaturan', icon: '⚙️', redirect_url: 'https://google.com', isForAdmin: true },
 ]
 
 export const announcementList = [
